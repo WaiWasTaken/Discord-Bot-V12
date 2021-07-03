@@ -10,8 +10,8 @@ const disbut = require('discord-buttons')(client);
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 
-['command_Handler', 'event_Handler'].forEach(Handler =>{
-    require(`./Handlers/${Handler}`)(client, Discord);
+['command_handler', 'event_handler'].forEach(handler =>{
+    require(`./handlers/${handler}`)(client, Discord);
 })
 
 
