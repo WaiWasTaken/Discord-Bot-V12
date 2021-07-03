@@ -4,6 +4,8 @@ require('dotenv').config();
 const fs = require('fs');
 const disbut = require('discord-buttons')(client);
  
+// https://www.npmjs.com/package/cool-ascii-faces
+
 //-------------------------------------------------------------------
 //                      Command & Event Handler      
 
@@ -42,7 +44,7 @@ client.on('guildMemberAdd', member => {
 
 
 const config = require("./config.json");
-client.login(process.env.Token);
+client.login(process.env.TOKEN);
 
 //-------------------------------------------------------------------
 //                            Custom status
