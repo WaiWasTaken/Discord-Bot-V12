@@ -31,7 +31,7 @@ client.on('guildMemberAdd', member => {
     if (!channel) return;
     // Send the message, mentioning the member
     const wb = new Discord.MessageEmbed()
-    .setColor('#0099ff')
+    .setColor('#FFFFFF')
     .setTitle('Welcome')
     .setDescription(`Welcome to the server ${member}`);
     channel.send(wb);
@@ -54,3 +54,6 @@ client.on("ready", () => {
 })
 
 //-------------------------------------------------------------------
+
+
+    
