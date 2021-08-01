@@ -6,7 +6,8 @@ module.exports = {
     cooldown: 2,
     description: "Resends a message from u as an Embed",
     async execute(message,args, cmd, client, discord) {
-    try{
+      if(!message.guild) return;
+      try{
       if(!args[0])
         return message.channel.send(new MessageEmbed()
             .setColor(ee.wrongcolor)
@@ -29,7 +30,7 @@ module.exports = {
             .setFooter(ee.footertext)
             .setTitle(`ERROR | An error occurred`)
             .setDescription(`\`\`\`${e.stack}\`\`\``)
-        );
+      );
     }
   }
 }

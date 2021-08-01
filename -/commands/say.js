@@ -3,6 +3,7 @@ module.exports = {
   name: 'say',
   description: 'When someone types ",say[message]" the bot says the message',
   async execute(message,args, cmd, client, discord) {
+    if(!message.guild) return;
     if (!message.member.hasPermission('ADMINISTRATOR', { checkAdmin: true, checkOwner: true }) && message.author.id !== config.ownerID) return message.reply('You cannot use this command!')
       var sayMessage = message.content.substring(4)
       message.delete().catch(O_o=>{});

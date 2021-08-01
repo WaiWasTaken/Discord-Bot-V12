@@ -4,6 +4,7 @@ module.exports = {
     name: 'mss',
     description: 'get information about a minecraft server',
     execute(message,args, cmd, client, Discord){
+        if(!message.guild) return;
         if(!args[0]) return message.channel.send('Please enter a minecraft server ip');
         if(!args[1]) return message.channel.send('Please enter a minecraft server port');
  

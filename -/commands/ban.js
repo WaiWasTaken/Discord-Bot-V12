@@ -6,6 +6,7 @@ module.exports = {
     description: "ban command",
 
     async execute (message,args, cmd, client, discord) {
+      if(!message.guild) return;  
       if (!message.member.hasPermission('BAN_MEMBERS','ADMINISTRATOR', { checkAdmin: true, checkOwner: true }) && message.author.id !== config.ownerID) return message.reply('You cannot use this command!')
       if (message.deletable) message.delete();
 
