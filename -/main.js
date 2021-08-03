@@ -2,8 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config(); 
 const fs = require('fs');
- 
-// https://www.npmjs.com/package/cool-ascii-faces
+const distube = require('distube');
+const  { MessageEmbed } = require('discord.js');
+const ee = require("../embed.json");
 
 //-------------------------------------------------------------------
 //                      Command & Event Handler      
@@ -60,19 +61,15 @@ client.on("ready", () => {
 
 // https://top.gg/bot/762243627274993665
 
-
-//    execute: async
-
-//  map handler .js files in maps that are in .commands
     
 
-const distube = require('distube');
 client.distube = new distube(client, { searchSongs:false, emitNewSongOnly:true})
 client.distube
-     .on("playSong", (message, queue, song) => message.channel.send(
-        `| Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`
+    .on("playSong", (message, queue, song) => message.channel.send(new MessageEmbed()
+        .setColor(ee.setColor)
+        .setAuthor(`${song.name}`)
+        .setTitle(`${song.formattedDuration}`)
+        .setDescription(`Requested by: ${song.user}`)
     ))
-    .on("addSong", (message, queue, song) => message.channel.send(
-        `| Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
-    ))
+    .on("addSong", (message, queue, song) => message.channel.send(`| Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`))
     .on("error", (message, err) => message.channel.send(` ⚠| An error encountered: ${err}`))
