@@ -15,11 +15,6 @@ module.exports = {
       .setFooter(ee.footertext)
     )
     await client.distube.stop(message)
-    await message.channel.send(new MessageEmbed()
-      .setColor(ee.color)
-      .setAuthor('Stopped playing')
-      .setTimestamp()
-      .setFooter(ee.footertext)
-    )
+    await message.channel.send('⚠| Stopped playing')
   }
 }
