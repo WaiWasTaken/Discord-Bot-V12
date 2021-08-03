@@ -70,6 +70,8 @@ client.distube
         .setAuthor(`${song.name}`)
         .setTitle(`${song.formattedDuration}`)
         .setDescription(`Requested by: ${song.user}`)
+        .setFooter(ee.footertext)
+        .setTimestamp()
     ))
     .on("addSong", (message, queue, song) => message.channel.send(`| Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`))
     .on("error", (message, err) => message.channel.send(` ⚠| An error encountered: ${err}`))
