@@ -4,7 +4,7 @@ require('dotenv').config();
 const fs = require('fs');
 const distube = require('distube');
 const  { MessageEmbed } = require('discord.js');
-const ee = require("../embed.json");
+
 
 //-------------------------------------------------------------------
 //                      Command & Event Handler      
@@ -66,11 +66,11 @@ client.on("ready", () => {
 client.distube = new distube(client, { searchSongs:false, emitNewSongOnly:true})
 client.distube
     .on("playSong", (message, queue, song) => message.channel.send(new MessageEmbed()
-        .setColor(ee.setColor)
+        .setColor('#FFFFFF')
         .setAuthor(`${song.name}`)
         .setTitle(`${song.formattedDuration}`)
         .setDescription(`Requested by: ${song.user}`)
-        .setFooter(ee.footertext)
+        .setFooter('Dai | powered by idiots')
         .setTimestamp()
     ))
     .on("addSong", (message, queue, song) => message.channel.send(`| Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`))
