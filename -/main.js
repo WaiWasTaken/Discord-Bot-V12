@@ -6,6 +6,7 @@ const distube = require('distube');
 const  { MessageEmbed } = require('discord.js');
 
 
+
 //-------------------------------------------------------------------
 //                      Command & Event Handler      
 
@@ -83,7 +84,9 @@ client.distube
     ))
     .on("error", (message, err) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
-        .setAuthor(`${err}`)
+        .setAuthor('Sorry an error occurred please pick difrent song or report the bug')
+        .setDescription(`${err}`)
         .setTimestamp()
         .setFooter('Dai | powered by idiots')
     ))
+    

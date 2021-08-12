@@ -15,6 +15,11 @@ module.exports = {
       .setFooter(ee.footertext)
     )
     await client.distube.skip(message)
-    await message.channel.send('⚠| Skipped current song')
+    await message.channel.send(new MessageEmbed()
+      .setColor(ee.color)
+      .setAuthor('Skipped current song')
+      .setTimestamp()
+      .setFooter(ee.footertext)
+    )
   }
 }
