@@ -37,12 +37,6 @@ module.exports = {
         .setTimestamp()
         .setFooter(ee.footertext)
       ).then(m => m.delete({timeout: 5000})))
-      .catch(err => message.channel.send(new MessageEmbed()
-        .setColor(ee.color)
-        .setAuthor(`Something went wrong... ${err}`)
-        .setTimestamp()
-        .setFooter(ee.footertext)
-      ));
 	}
 }
   
