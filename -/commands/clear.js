@@ -6,12 +6,21 @@ module.exports = {
     description: "this is a clear command",
     aliases: ["purge", "nuke"],
   async execute (message,args, cmd, client, discord) {
+    if (message.deletable) message.delete();
     if (!message.member.hasPermission('MANAGE_MESSAGES', { checkAdmin: true, checkOwner: true }) && message.author.id !== config.ownerID) return message.reply('You cannot use this command!')
     if(!message.guild) return;
 
   // Check if args[0] is a number
   if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
-      return message.reply("Yeah.... That's not a numer? I also can't delete 0 messages by the way.").then(m => m.delete(5000));
+		return message.channel.send(new MessageEmbed()
+            .setColor(ee.color)
+            .setAuthor(`${message.author.username}, Yeah... That's not a numer`)
+            .setTitle(" I also can't delete 0 messages by the way")
+            .setTimestamp()
+            .setFooter(ee.footertext)
+         ).then(msg => {
+           msg.delete({ timeout: 3000});
+         })
   }
   let deleteAmount;
 
@@ -22,8 +31,18 @@ module.exports = {
   }
 
   message.channel.bulkDelete(deleteAmount, true)
-      .then(deleted => message.channel.send(`Successfully Deleted ${deleteAmount} Messages.`).then(m => m.delete({timeout: 5000})))
-      .catch(err => message.reply(`Something went wrong... ${err}`));
+      .then(deleted => message.channel.send(new MessageEmbed()
+        .setColor(ee.color)
+        .setAuthor(`Successfully Deleted ${deleteAmount} Messages`)
+        .setTimestamp()
+        .setFooter(ee.footertext)
+      ).then(m => m.delete({timeout: 5000})))
+      .catch(err => message.channel.send(new MessageEmbed()
+        .setColor(ee.color)
+        .setAuthor(`Something went wrong... ${err}`)
+        .setTimestamp()
+        .setFooter(ee.footertext)
+      ));
 	}
 }
   
