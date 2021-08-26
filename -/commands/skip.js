@@ -4,7 +4,7 @@ const ee = require("../embed.json");
 
 module.exports = {
     name:'skip',
-    aliases: [],
+    aliases: ["n"],
   execute: async(message,args, cmd, client, discord) => {
     if(!message.guild) return;
     if (message.deletable) message.delete();

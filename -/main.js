@@ -62,6 +62,8 @@ client.on("ready", () => {
 
 // https://top.gg/bot/762243627274993665
 
+// https://www.npmjs.com/package/@distube/spotify
+
     
 
 client.distube = new distube(client, { searchSongs:false, emitNewSongOnly:true})
@@ -85,7 +87,6 @@ client.distube
     .on("error", (message, err) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
         .setAuthor('Sorry an error occurred please pick difrent song or report the bug')
-        .setDescription(`${err}`)
         .setTimestamp()
         .setFooter('Dai | powered by idiots')
     ))

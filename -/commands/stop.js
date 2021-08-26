@@ -4,7 +4,7 @@ const ee = require("../embed.json");
 
 module.exports = {
     name:'stop',
-    aliases: [],
+    aliases: ["leave"],
   execute: async(message,args, cmd, client, discord) => {
     if(!message.guild) return;
     if (message.deletable) message.delete();
@@ -15,6 +15,11 @@ module.exports = {
       .setFooter(ee.footertext)
     )
     await client.distube.stop(message)
-    await message.channel.send('⚠| Stopped playing')
+    await message.channel.send(new MessageEmbed()
+      .setColor(ee.color)
+      .setAuthor('Stopped playing')
+      .setTimestamp()
+      .setFooter(ee.footertext)
+    )
   }
 }
