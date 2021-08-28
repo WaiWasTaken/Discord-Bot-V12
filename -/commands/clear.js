@@ -31,18 +31,12 @@ module.exports = {
   }
 
   message.channel.bulkDelete(deleteAmount, true)
-      .then(deleted => message.channel.send(new MessageEmbed()
-        .setColor(ee.color)
-        .setAuthor(`Successfully Deleted ${deleteAmount} Messages`)
-        .setTimestamp()
-        .setFooter(ee.footertext)
-      ).then(m => m.delete({timeout: 5000})))
       .catch(err => message.channel.send(new MessageEmbed()
         .setColor(ee.color)
         .setAuthor('Sorry i cannot delete messages older than 14 days')
         .setTimestamp()
         .setFooter(ee.footertext)
-      ));
+      ).then(m => m.delete({timeout: 5000})))
 	}
 }
   
