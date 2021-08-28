@@ -62,31 +62,38 @@ client.on("ready", () => {
 
 // https://top.gg/bot/762243627274993665
 
-// https://www.npmjs.com/package/@distube/spotify
-
     
 
 client.distube = new distube(client, { searchSongs:false, emitNewSongOnly:true})
 client.distube
     .on("playSong", (message, queue, song) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
-        .setAuthor(`${song.name}`)
-        .setTitle(`${song.formattedDuration}`)
-        .setDescription(`Requested by: ${song.user}`)
+        .setTitle(`Now playing`)
+        .setDescription(`${song.name} [${song.user}]`)
         .setFooter('Wai | powered by idiots')
         .setTimestamp()
     ))
     .on("addSong", (message, queue, song) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
-        .setAuthor(`${song.name}`)
-        .setTitle(`${song.formattedDuration}`)
-        .setDescription(`Added to the queue by: ${song.user}`)
+        .setAuthor(`Queued ${song.name} [${song.user}]`)
         .setFooter('Wai | powered by idiots')
         .setTimestamp()
+    ))  
+    .on("playList", (message, queue, playlist, song) => message.channel.send(new MessageEmbed()
+        .setColor('#FFFFFF')
+        .setAuthor(`Playing ${playlist.name}`)
+        .setTimestamp()
+        .setFooter('Wai | powered by idiots')
+    ))
+    .on("addList", (message, queue, playlist) => message.channel.send(new MessageEmbed()
+        .setColor('#FFFFFF')
+        .setAuthor(`Added ${playlist.name} to playlist`)
+        .setTimestamp()
+        .setFooter('Wai | powered by idiots')
     ))
     .on("error", (message, err) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
-        .setAuthor('Sorry an error occurred please pick difrent song or report the bug')
+        .setAuthor('Sorry an error occurred please pick difrent song or playlist')
         .setTimestamp()
         .setFooter('Wai | powered by idiots')
     ))

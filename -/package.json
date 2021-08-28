@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
-    "@distube/spotify": "^0.6.2",
+    "@distube/spotify": "^0.6.3",
     "@distube/youtube-dl": "^2.2.2",
     "common-tags": "0.0.2",
     "discord-buttons": "^3.2.1",
@@ -28,7 +28,7 @@
     "libsodium-wrappers": "^0.7.9",
     "minecraft-server-util": "^3.6.0",
     "node-fetch": "^2.6.1",
-    "yt-search": "^2.10.0",
+    "yt-search": "^2.10.1",
     "ytdl-core": "^4.9.1"
   }
 }
