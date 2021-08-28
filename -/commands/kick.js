@@ -20,6 +20,7 @@ module.exports = {
         .setDescription(`Reason: ${reason}`)
         .setColor(ee.color)
         .setTimestamp()
+        .setFooter(ee.footertext)
 
         if (!args[0]) return message.channel.send("You need to specify a user to kick");
 

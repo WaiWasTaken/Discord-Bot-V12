@@ -19,6 +19,7 @@
     "@distube/youtube-dl": "^2.2.2",
     "common-tags": "0.0.2",
     "discord-buttons": "^3.2.1",
+    "discord-together": "^1.1.62",
     "discord.js": "^12.5.3",
     "discord.js-commando": "github:discordjs/Commando",
     "distube": "^2.8.18",

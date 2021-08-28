@@ -7,6 +7,7 @@ module.exports = {
     aliases: [],
 
    async execute(message,args, cmd, client, discord) {
+    if (message.deletable) message.delete();
     if (message.author.id !== config.ownerID) return message.channel.send(new MessageEmbed()
       .setColor(ee.wrongcolor)
       .setAuthor('That command can only be run by the owner of this bot')
@@ -15,6 +16,7 @@ module.exports = {
         message.channel.send(new MessageEmbed()
            .setColor(ee.color)
            .setAuthor(`${client.user.username} connected in ${client.voice.connections.size} channels`)
+           .setTitle(`Currently in ${client.guilds.cache.size} servers`)
            .setTimestamp()
        );
     }

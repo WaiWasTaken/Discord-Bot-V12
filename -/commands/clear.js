@@ -39,15 +39,10 @@ module.exports = {
       ).then(m => m.delete({timeout: 5000})))
       .catch(err => message.channel.send(new MessageEmbed()
         .setColor(ee.color)
-        .setAuthor(`Something went wrong... ${err}`)
+        .setAuthor('Sorry i cannot delete messages older than 14 days')
         .setTimestamp()
         .setFooter(ee.footertext)
       ));
 	}
 }
   
- 
-
-
-
-// You can only delete the messages which are not older than 14 days.
