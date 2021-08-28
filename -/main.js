@@ -4,7 +4,8 @@ require('dotenv').config();
 const fs = require('fs');
 const distube = require('distube');
 const  { MessageEmbed } = require('discord.js');
-
+const { DiscordTogether } = require('discord-together');
+client.discordTogether = new DiscordTogether(client);
 
 
 //-------------------------------------------------------------------
