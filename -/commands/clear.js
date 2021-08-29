@@ -6,7 +6,6 @@ module.exports = {
     description: "this is a clear command",
     aliases: ["purge", "nuke"],
   async execute (message,args, cmd, client, discord) {
-    if (message.deletable) message.delete();
     if (!message.member.hasPermission('MANAGE_MESSAGES', { checkAdmin: true, checkOwner: true }) && message.author.id !== config.ownerID) return message.reply('You cannot use this command!')
     if(!message.guild) return;
 
@@ -25,12 +24,12 @@ module.exports = {
   let deleteAmount;
 
   if (parseInt(args[0]) > 100) {
-      deleteAmount = 100;
+      deleteAmount = 99;
   } else {
       deleteAmount = parseInt(args[0]);
   }
 
-  message.channel.bulkDelete(deleteAmount, true)
+  message.channel.bulkDelete(deleteAmount + 1, true)
       .catch(err => message.channel.send(new MessageEmbed()
         .setColor(ee.color)
         .setAuthor('Sorry i cannot delete messages older than 14 days')
