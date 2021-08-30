@@ -23,19 +23,12 @@ module.exports = {
 		message.channel.bulkDelete(amountParsed, true)
 		.catch(err => message.channel.send(new MessageEmbed()
          .setColor(ee.color)
-         .setAuthor('Sorry i cannot delete messages older than 14 days')
+         .setAuthor(`Sorry i cannot delete messages older than 14 days`)
          .setTimestamp()
          .setFooter(ee.footertext)
         ).then(m => m.delete({timeout: 5000})))
-
-		const msg = await message.channel.send(new  MessageEmbed()
-			.setColor(ee.color)
-			.setAuthor(`Cleared ${amountParsed} messages`)
-			.setTimestamp()
-			.setFooter(ee.footertext)
-		)
-
-		setTimeout(() => msg.delete(), 5000);
 	}
 };
 // Cleared ${amountParsed} messages
+
+// Sorry i cannot delete messages older than 14 days
