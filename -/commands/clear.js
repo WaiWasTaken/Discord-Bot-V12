@@ -1,41 +1,40 @@
 const config = require("../config.json");
+const Discord = require('discord.js');
 const ee = require("../embed.json");
 const  { MessageEmbed } = require('discord.js');
+
 module.exports = {
-    name:'clear',
-    description: "this is a clear command",
-    aliases: ["purge", "nuke"],
-  async execute (message,args, cmd, client, discord) {
-    if (!message.member.hasPermission('MANAGE_MESSAGES', { checkAdmin: true, checkOwner: true }) && message.author.id !== config.ownerID) return message.reply('You cannot use this command!')
-    if(!message.guild) return;
+	name: "clear",
+	description: "Clear an amount of messages",
+	async execute(message,args, cmd, client, discord) {
+		if (message.deletable) message.delete();
+		if(!message.guild) return;  
+		if (!message.member.hasPermission('MANAGE_MESSAGES', { checkAdmin: true, checkOwner: true }) && message.author.id !== config.ownerID) return message.reply('You cannot use this command!')
+		const amount = args[0];
 
-  // Check if args[0] is a number
-  if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
-		return message.channel.send(new MessageEmbed()
-            .setColor(ee.color)
-            .setAuthor(`${message.author.username}, Yeah... That's not a numer`)
-            .setTitle(" I also can't delete 0 messages by the way")
-            .setTimestamp()
-            .setFooter(ee.footertext)
-         ).then(msg => {
-           msg.delete({ timeout: 3000});
-         })
-  }
-  let deleteAmount;
+		if (!amount || isNaN(amount))
+			return message.reply(`${amount == undefined ? "Nothing" : amount} is not a valid number!`);
 
-  if (parseInt(args[0]) > 100) {
-      deleteAmount = 99;
-  } else {
-      deleteAmount = parseInt(args[0]) +1;
-  }
+		const amountParsed = parseInt(amount);
 
-  message.channel.bulkDelete(deleteAmount, true)
-      .catch(err => message.channel.send(new MessageEmbed()
+		if (amountParsed > 100)
+			return message.reply("You cannot clear more than 100 messages!");
+
+		message.channel.bulkDelete(amountParsed, true)
+		.catch(err => message.channel.send(new MessageEmbed()
         .setColor(ee.color)
         .setAuthor('Sorry i cannot delete messages older than 14 days')
         .setTimestamp()
         .setFooter(ee.footertext)
       ).then(m => m.delete({timeout: 5000})))
+
+		const msg = await message.channel.send(new  MessageEmbed()
+			.setColor(ee.color)
+			.setAuthor(`Cleared ${amountParsed} messages`)
+			.setTimestamp()
+			.setFooter(ee.footertext)
+		)
+		setTimeout(() => msg.delete(), 1000);
 	}
-}
-  
+};
+// Cleared ${amountParsed} messages
