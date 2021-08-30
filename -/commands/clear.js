@@ -26,10 +26,10 @@ module.exports = {
   if (parseInt(args[0]) > 100) {
       deleteAmount = 99;
   } else {
-      deleteAmount = parseInt(args[0]);
+      deleteAmount = parseInt(args[0]) +1;
   }
 
-  message.channel.bulkDelete(deleteAmount + 1, true)
+  message.channel.bulkDelete(deleteAmount, true)
       .catch(err => message.channel.send(new MessageEmbed()
         .setColor(ee.color)
         .setAuthor('Sorry i cannot delete messages older than 14 days')
