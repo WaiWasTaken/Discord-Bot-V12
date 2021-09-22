@@ -63,20 +63,20 @@ client.on("ready", () => {
 
 // https://top.gg/bot/762243627274993665
 
-    
+   
 
 client.distube = new distube(client, { searchSongs:false, emitNewSongOnly:true})
 client.distube
     .on("playSong", (message, queue, song) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
         .setTitle(`Now playing`)
-        .setDescription(`${song.name} [${song.user}]`)
+        .setDescription(`${song.name} [ <@${message.author.id}> ]`)
         .setFooter('Wai | powered by idiots')
         .setTimestamp()
     ))
     .on("addSong", (message, queue, song) => message.channel.send(new MessageEmbed()
         .setColor('#FFFFFF')
-        .setAuthor(`Queued ${song.name} [${song.user}]`)
+        .setAuthor(`Queued ${song.name}  [ <@${message.author.id}> ]`)
         .setFooter('Wai | powered by idiots')
         .setTimestamp()
     ))  
